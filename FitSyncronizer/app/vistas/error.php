@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>No tienes permisos para realizar esta acciónnn</h1>
+    <h1>No tienes permisos para realizar esta acciónnnn</h1>
 </body>
 </html>
