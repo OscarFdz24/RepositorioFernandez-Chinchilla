@@ -1,0 +1,78 @@
+
+
+/* Estilos de la cuadrícula */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
+
+/* Estilos de las cartas */
+.card {
+    background-color: rgb(248, 248, 248,0);
+    overflow: hidden;
+    height: 100%;
+    /* Altura fija para todas las cartas */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 0px;
+    box-shadow: none!important;
+}
+.card h3{
+    color: white;
+}
+.card a{
+    color: white;
+    text-decoration: none;
+}
+.crear-perfil {
+    color: white;
+}
+
+.perfil-img {
+    max-width: 60%;
+    min-width: 60%;
+    max-height: 250px;
+    min-height: 250px;
+    border-radius: 50%;
+}
+h3{
+    padding-top: 1rem;
+    font-size: 1.5rem;
+}
+a{
+    font-size: 1.5rem;
+}
+@media (max-width: 821px) {
+    .perfil-img {
+        max-width: 40%;
+        min-width: 40%;
+        max-height: 100px;
+        min-height: 100px;
+        border-radius: 50%;
+    }
+    h3{
+        padding-top: 1rem;
+        font-size: 1rem;
+    }
+    a{
+        text-align: center;
+        font-size: 1rem;
+    }
+}
+@media (max-width: 500px) {
+    .col{
+        padding: 0!important;
+    }
+    .perfil-img {
+        max-width: 50%;
+        min-width: 50%;
+        max-height: 80px;
+        min-height: 80px;
+        border-radius: 50%;
+    }
+    a{
+        font-size: 0.9rem;
+    }
+}

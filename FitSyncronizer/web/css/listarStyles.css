@@ -1,0 +1,226 @@
+#content-container{
+    min-width: 100%;
+    text-align: center;
+}
+/* Estilos de títulos */
+.title--Primary {
+    color: rgb(38, 122, 201);
+}
+
+.fecha__title {
+    margin-bottom: 0px;
+}
+
+/* Estilos del enlace que simula un botón */
+.btn-100 {
+    display: inline-block;
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    background-color: #142057;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    margin-top: 2rem;
+    margin-left: 0 !important;
+}
+
+.btn-100:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.btn-100:active {
+    background-color: #004080;
+    transform: translateY(0);
+}
+.btn-small{
+    width: 90%;
+    text-align: center;
+}
+.btn-cont{
+    text-align: center;
+}
+/* Estilos de la cuadrícula */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
+
+.col-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.col-6 a {
+    text-decoration: none;
+    color: white;
+    margin-right: 0 !important;
+}
+
+/* Estilos de las cartas */
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    height: 600px; /* Altura fija para todas las cartas */
+    display: flex;
+    flex-direction: column;
+}
+
+.card__header {
+    background-color: #000000;
+    color: #fff;
+    padding: 10px 15px;
+    text-align: center;
+    border: 2px solid #000000;
+    border-radius: 10px !important;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-bottom: 0 !important;
+}
+
+.card__body {
+    padding: 15px;
+    flex-grow: 1;
+    background-color: #131212;
+    color: white;
+    text-align: start!important;
+    scroll-behavior: smooth; /* Desplazamiento suave */
+}
+
+.card__body pre {
+    margin: 0!important;
+    padding: 0!important;
+    width: 100%; /* Ancho al 100% del card body */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 12; /* Número máximo de líneas que se mostrarán */
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word; /* Opción 1: Hace que las palabras largas se ajusten al ancho del contenedor */
+    /* o */
+    overflow-wrap: break-word; /* Opción 2: Propiedad alternativa para navegadores más modernos */
+}
+.card h3{
+    color: white;
+}
+.card a{
+    color: white;
+    text-decoration: none;
+}
+.crear-perfil {
+    color: white;
+}
+
+.perfil-img {
+    max-width: 200px;
+    max-height: 180px;
+    min-height: 180px;
+    border-radius: 50%;
+}
+/* Estilos de botones de acciones */
+.col--deleteButton {
+    background-color: rgb(75, 0, 0);
+}
+
+.col--deleteButton:hover {
+    background-color: rgb(119, 0, 0);
+}
+
+.col--modifierButton {
+    background-color: rgb(0, 32, 15);
+}
+
+.col--modifierButton:hover {
+    background-color: rgb(0, 54, 24);
+}
+
+.col--viewButton {
+    background-color: rgb(0, 0, 0);
+}
+
+.col--viewButton:hover {
+    background-color: rgb(14, 14, 14);
+}
+
+/* Estilos del modal */
+.modal__header {
+    background-color: #131212;
+}
+
+.modal__title {
+    font-weight: bold;
+}
+
+.modal__body {
+    font-size: 1.1em;
+    background-color: #131212;
+}
+
+.modal__footer {
+    background-color: #131212;
+}
+
+.modal__footer .btn {
+    width: 80px;
+}
+
+.btn-close {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+}
+
+/* Estilos responsivos */
+@media (max-width: 375px) {
+    .crm_main {
+        margin-top: 70rem !important;
+    }
+}
+
+@media (min-width: 374px) {
+    .crm_main {
+        margin-top: 70rem !important;
+    }
+}
+
+@media (min-width: 400px) {
+    .crm_main {
+        margin-top: 60rem !important;
+    }
+
+    .col-6 a {
+        text-decoration: none;
+        color: white;
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 455px) {
+    .brand img {
+        width: 50px;
+    }
+
+    .crm-menu-header {
+        display: inline;
+    }
+
+    .fa-right-from-bracket {
+        display: none;
+    }
+}

@@ -1,0 +1,102 @@
+.content-container{
+    text-align: start!important;
+}
+.content-container h1{
+    text-align: center!important;
+}
+/* Estilos de las cartas */
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.card__header {
+    background-color: #000000;
+    color: #fff;
+    padding: 10px 15px;
+    text-align: center;
+    border: 2px solid #000000;
+    border-radius: 10px !important;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-bottom: 0 !important;
+}
+
+.card__body {
+    padding: 15px;
+    overflow: hidden;
+    flex-grow: 1;
+    background-color: #131212;
+    color: white;
+}
+
+.card__body p {
+    margin: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+.buttons-container{
+    text-align: center;
+}
+.buttons{
+    padding: 0.7rem;
+    text-align: center;
+    margin: 1rem;
+    border-radius: 10px;
+    margin: auto;
+    margin-bottom: 2rem;
+}
+.buttons a{
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+.buttons--delete{
+    width: 30%;
+    background-color: rgb(75, 0, 0);
+    display: block;
+    margin-top: 2rem;
+}
+.buttons--delete:hover{
+    background-color: rgb(119, 0, 0);
+}
+.buttons--modifier{
+    width: 30%;
+    background-color: rgb(0, 32, 15);
+}
+.buttons--modifier:hover{
+    background-color: rgb(0, 54, 24);
+}
+@media (max-width: 821px) {
+    .buttons{
+        margin: auto;
+        font-size: 1rem;
+        text-align: start;
+        margin-top: 1rem;
+    }
+    .content-container__data-entrenamiento h2{
+        font-size: 1rem;
+    }
+
+}
+@media (max-width: 621px) {
+    .buttons{
+        text-align: center;
+        padding-right: 20px;
+    }
+    .buttons i{
+        display: none;
+    }
+    .buttons--delete{
+        width: 30%;
+    }
+    .buttons--modifier{
+        width: 30%;
+    }
+    
+}
