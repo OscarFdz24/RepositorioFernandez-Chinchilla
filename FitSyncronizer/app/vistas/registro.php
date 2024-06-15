@@ -25,21 +25,26 @@
         </nav>
     </header>
     <main>
+        <?php if (isset($error)) : ?>
+            <div class="alert alert-danger" role="alert">
+                <?php echo $error; ?>
+            </div>
+        <?php endif; ?>
         <section id="formulario-normal">
             <h3>Plan para usuarios básicos</h3>
             <hr>
             <form action="index.php?accion=registrar" method="post">
                 <input type="hidden" name="tipo" value="normal">
                 <label for="nombre">Nombre personal</label><br>
-                <input type="text" id="nombre" name="nombre" required><br>
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre" required><br>
                 <label for="nombreUsuario">Nombre de usuario</label><br>
-                <input type="text" id="nombreUsuario" name="nombreUsuario" required><br>
+                <input type="text" id="nombreUsuario" name="nombreUsuario" placeholder="Nombre de usuario" required><br>
                 <label for="email">Correo electrónico</label><br>
-                <input type="text" id="email" name="email" required><br>
+                <input type="text" id="email" name="email" required placeholder="Correo electrónico"><br>
                 <label for="contrasena">Contraseña</label><br>
-                <input type="password" id="contrasena" name="password" required><br>
+                <input type="password" id="contrasena" name="password" placeholder="Ingrese su contraseña" required><br>
                 <label for="contrasena2">Confirmar contraseña</label><br>
-                <input type="password" id="contrasena2" name="password2" required><br><br>
+                <input type="password" id="contrasena2" name="password2" placeholder="Confirme su contraseña" required><br><br>
                 <input class="boton" type="submit" value="Acceder">
             </form>
         </section>
@@ -49,17 +54,17 @@
             <form action="index.php?accion=registrar" method="post">
                 <input type="hidden" name="tipo" value="profesional">
                 <label for="nombre2">Nombre personal</label><br>
-                <input type="text" id="nombre2" name="nombre2" required><br>
+                <input type="text" id="nombre2" name="nombre2" placeholder="Nombre" required><br>
                 <label for="nombreUsuario2">Nombre de usuario</label><br>
-                <input type="text" id="nombreUsuario2" name="nombreUsuario2" required><br>
+                <input type="text" id="nombreUsuario2" name="nombreUsuario2" placeholder="Correo electrónico" required><br>
                 <label for="email2">Correo electrónico</label><br>
-                <input type="text" id="email2" name="email2" required><br>
+                <input type="text" id="email2" name="email2" placeholder="Correo electrónico" required><br>
                 <label for="telefono">Teléfono</label><br>
-                <input type="number" id="telefono" name="telefono" required><br>
+                <input type="number" id="telefono" name="telefono" placeholder="Nº Telefono" required><br>
                 <label for="contrasenaP">Contraseña</label><br>
-                <input type="password" id="contrasenaP" name="passwordP" required><br>
+                <input type="password" id="contrasenaP" name="passwordP" placeholder="Ingrese su contraseña" required><br>
                 <label for="contrasena2P">Confirmar contraseña</label><br>
-                <input type="password" id="contrasena2P" name="password2P" required><br><br>
+                <input type="password" id="contrasena2P" name="password2P" placeholder="Confirme su contraseña" required><br><br>
                 <input class="boton" type="submit" value="Acceder">
             </form>
         </section>

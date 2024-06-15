@@ -5,6 +5,7 @@ class ControladorUsuarios
 {
     public function inicio()
     {
+        $error = '';
         $conexionDB = new ConexionBD(MYSQL_USER, MYSQL_PASS, MYSQL_HOST, MYSQL_DB);
         $conn = $conexionDB->getConnexion();
 
@@ -25,75 +26,46 @@ class ControladorUsuarios
     }
 
     public function registrar()
-    {
-        $error = '';
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            //Para ver que formulario se rellena tenemos esta condición
-            if ($_POST['tipo'] == 'normal') {
+{
+    $error = null;
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        //Para ver que formulario se rellena tenemos esta condición
+        if ($_POST['tipo'] == 'normal') {
 
-                //Recogida de datos
-                $nombre = htmlentities($_POST['nombre']);
-                $nombreU = htmlentities($_POST['nombreUsuario']);
-                $email = htmlentities($_POST['email']);
-                $password = htmlentities($_POST['password']);
-                $password2 = htmlentities($_POST['password2']);
-                $telefono = null;
-                $perfilPublico = false;
-                $rol = "Normal";
-            } elseif ($_POST['tipo'] == 'profesional') {
-                $nombre = htmlentities($_POST['nombre2']);
-                $nombreU = htmlentities($_POST['nombreUsuario2']);
-                $email = htmlentities($_POST['email2']);
-                $password = htmlentities($_POST['passwordP']);
-                $password2 = htmlentities($_POST['password2P']);
-                $telefono = htmlentities($_POST['telefono']);
-                $perfilPublico = true;
-                $rol = "Profesional";
-            }
-            //Condiciones para que se rellenes todos los campos correctamente
-            if (empty($email) || empty($password) || empty($password2)) {
-                $error = "Todos los campos son obligatorios";
-            } elseif ($password != $password2) {
-                $error = "Las contraseñas no coinciden";
-            } else {
-                //Conexion a la BD
-                $conexionDB = new ConexionBD(MYSQL_USER, MYSQL_PASS, MYSQL_HOST, MYSQL_DB);
-                $conn = $conexionDB->getConnexion();
-
-                //Instancia del DAO de usuarios
-                $usuariosDAO = new UsuariosDAO($conn);
-
-                //Compruebo que no exista un usuario con este email
-                if ($usuariosDAO->getByEmail($email) != null) {
-                    $error = "Ya hay un usuario con ese email";
-                } else {
-                    //SI no existe, creo uno nuevo
-                    $usuario = new Usuario();
-                    $usuario->setCorreo($email);
-                    $usuario->setRol($rol);
-                    $usuario->setNombre($nombre);
-                    $usuario->setNombreUsuario($nombreU);
-                    $usuario->setTelefono($telefono);
-                    $usuario->setPerfilPublico($perfilPublico);
-                    $passwordCifrado = password_hash($password, PASSWORD_DEFAULT);
-                    $usuario->setContrasena($passwordCifrado);
-
-                    //Condicion para registrar el nuevo usuario y volver a la página de login
-                    if ($usuariosDAO->insert($usuario)) {
-                        header("location: index.php");
-                        die();
-                    } else {
-                        $error = "No se ha podido insertar el usuario";
-                    }
-                }
-            }
+            //Recogida de datos
+            $nombre = htmlentities($_POST['nombre']);
+            $nombreU = htmlentities($_POST['nombreUsuario']);
+            $email = htmlentities($_POST['email']);
+            $password = htmlentities($_POST['password']);
+            $password2 = htmlentities($_POST['password2']);
+            $telefono = null;
+            $perfilPublico = false;
+            $rol = "Normal";
+        } elseif ($_POST['tipo'] == 'profesional') {
+            $nombre = htmlentities($_POST['nombre2']);
+            $nombreU = htmlentities($_POST['nombreUsuario2']);
+            $email = htmlentities($_POST['email2']);
+            $password = htmlentities($_POST['passwordP']);
+            $password2 = htmlentities($_POST['password2P']);
+            $telefono = htmlentities($_POST['telefono']);
+            $perfilPublico = true;
+            $rol = "Profesional";
         }
-        require 'app/vistas/registro.php';
-    }
-
-    public function login()
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        
+        //Condiciones para que se rellenes todos los campos correctamente
+        if (empty($nombre) || empty($nombreU) || empty($email)) {
+            $error = "Nombre, nombre de usuario y correo electrónico son obligatorios";
+        } elseif (strlen($nombre) > 200 || strlen($nombreU) > 200 || strlen($email) > 200) {
+            $error = "Nombre, nombre de usuario y correo electrónico no pueden tener más de 200 caracteres";
+        } elseif (!is_null($telefono) && (strlen($telefono) != 9 || !is_numeric($telefono))) {
+            $error = "El teléfono debe tener exactamente 9 dígitos";
+        } elseif (strlen($password) < 6) {
+            $error = "La contraseña debe tener al menos 6 caracteres";
+        } elseif (empty($password) || empty($password2)) {
+            $error = "Todos los campos son obligatorios";
+        } elseif ($password != $password2) {
+            $error = "Las contraseñas no coinciden";
+        } else {
             //Conexion a la BD
             $conexionDB = new ConexionBD(MYSQL_USER, MYSQL_PASS, MYSQL_HOST, MYSQL_DB);
             $conn = $conexionDB->getConnexion();
@@ -101,41 +73,82 @@ class ControladorUsuarios
             //Instancia del DAO de usuarios
             $usuariosDAO = new UsuariosDAO($conn);
 
-            //Recogemos los datos
-            $nombreUsuario = htmlspecialchars($_POST['nombreUsuario']);
-            $email = htmlspecialchars($_POST['email']);
-            $password = htmlspecialchars($_POST['contrasena']);
+            //Compruebo que no exista un usuario con este email
+            if ($usuariosDAO->getByEmail($email) != null) {
+                $error = "Ya hay un usuario con ese email";
+            } elseif ($usuariosDAO->getByNombreUsuario($nombreU) != null) {
+                $error = "Ya hay un usuario con ese nombre de usuario";
+            } else {
+                //SI no existe, creo uno nuevo
+                $usuario = new Usuario();
+                $usuario->setCorreo($email);
+                $usuario->setRol($rol);
+                $usuario->setNombre($nombre);
+                $usuario->setNombreUsuario($nombreU);
+                $usuario->setTelefono($telefono);
+                $usuario->setPerfilPublico($perfilPublico);
+                $passwordCifrado = password_hash($password, PASSWORD_DEFAULT);
+                $usuario->setContrasena($passwordCifrado);
 
-            //Condicion para probar que existe un usuario con los parametros proporcionados
-            if ($usuario = $usuariosDAO->getByEmail($email)) {
-                //Compruebo la contraseña y el nombre de usuarios ya que es Unico
-                if (password_verify($password, $usuario->getContrasena()) && $nombreUsuario == $usuario->getNombreUsuario()) {
-                    //Inicio sesion
-                    session_start();
-                    Sesion::iniciarSesion($usuario);
-
-                    // Creamos la cookie para que nos recuerde por 1 semana
-                    setcookie('usuario', $nombreUsuario, time() + 7 * 24 * 60 * 60, '/');
-
-                    //Dependiendo el rol lo redirige a una vista normal o profesional
-                    if ($usuario->getRol() == "Normal") {
-                        header('location: index.php?accion=vistaNormal');
-                    } elseif ($usuario->getRol() == "Profesional") {
-                        header('location: index.php?accion=vistaNormal');
-                    } elseif ($usuario->getRol() == "Administrador") {
-                        header('location: index.php?accion=vistaAdmin');
-                    }
+                //Condicion para registrar el nuevo usuario y volver a la página de login
+                if ($usuariosDAO->insert($usuario)) {
+                    header("location: index.php");
                     die();
                 } else {
-                    $error = "Error con las credenciales";
+                    $error = "No se ha podido insertar el usuario";
                 }
-            } else {
-                $error = "Email o password incorrectos";
             }
-            guardarMensaje($error);
-            header('location: index.php');
         }
     }
+    require 'app/vistas/registro.php';
+}
+
+public function login()
+{
+    $error = null;
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        //Conexion a la BD
+        $conexionDB = new ConexionBD(MYSQL_USER, MYSQL_PASS, MYSQL_HOST, MYSQL_DB);
+        $conn = $conexionDB->getConnexion();
+
+        //Instancia del DAO de usuarios
+        $usuariosDAO = new UsuariosDAO($conn);
+
+        //Recogemos los datos
+        $nombreUsuario = htmlspecialchars($_POST['nombreUsuario']);
+        $email = htmlspecialchars($_POST['email']);
+        $password = htmlspecialchars($_POST['contrasena']);
+
+        //Condicion para probar que existe un usuario con los parametros proporcionados
+        if ($usuario = $usuariosDAO->getByEmail($email)) {
+            //Compruebo la contraseña y el nombre de usuario ya que es único
+            if (password_verify($password, $usuario->getContrasena()) && $nombreUsuario == $usuario->getNombreUsuario()) {
+                //Inicio sesion
+                session_start();
+                Sesion::iniciarSesion($usuario);
+
+                // Creamos la cookie para que nos recuerde por 1 semana
+                setcookie('usuario', $nombreUsuario, time() + 7 * 24 * 60 * 60, '/');
+
+                //Dependiendo el rol lo redirige a una vista normal o profesional
+                if ($usuario->getRol() == "Normal") {
+                    header('location: index.php?accion=vistaNormal');
+                } elseif ($usuario->getRol() == "Profesional") {
+                    header('location: index.php?accion=vistaNormal');
+                } elseif ($usuario->getRol() == "Administrador") {
+                    header('location: index.php?accion=vistaAdmin');
+                }
+                die();
+            } else {
+                $error = "Error con las credenciales";
+            }
+        } else {
+            $error = "Email o contraseña incorrectos";
+        }
+    }
+    // Mostramos la vista de login y pasamos el mensaje de error si lo hay
+    require 'app/vistas/inicio.php';
+}
     public function cerrarSesion()
     {
         // Iniciar la sesión
@@ -176,6 +189,7 @@ class ControladorUsuarios
     //Funcion para mostrar la vista de administrador
     public function vistaAdmin()
     {
+        $error = null;
         if (!Sesion::existeSesion()) {
             header('Location: index.php');
             die();
@@ -202,6 +216,7 @@ class ControladorUsuarios
     //Funcion para mostrar la vista de ajustes
     public function verAjustes()
     {
+        $error = null;
         if (!Sesion::existeSesion()) {
             header('Location: index.php');
             die();
@@ -224,6 +239,7 @@ class ControladorUsuarios
     //Funcion para mostrar la vista de modificar ajustes
     public function modificarDatosUsuario()
     {
+        $error = null;
         if (!Sesion::existeSesion()) {
             header('Location: index.php');
             die();
@@ -282,6 +298,7 @@ class ControladorUsuarios
     //Funcion para eliminar la cuenta del usuario
     public function eliminarUsuario()
     {
+        $error = null;
         if (!Sesion::existeSesion()) {
             header('Location: index.php');
             die();
@@ -323,6 +340,7 @@ class ControladorUsuarios
     }
     public function modificarUsuarioAdmin()
     {
+        $error = null;
         // Verificar si existe la sesión
         if (!Sesion::existeSesion()) {
             header('Location: index.php');
@@ -353,6 +371,7 @@ class ControladorUsuarios
     }
 
     public function sobreMi(){
+        $error = null;
         // Verificar si existe la sesión
         if (!Sesion::existeSesion()) {
             header('Location: index.php');
