@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>FitSyncronizer | Inicio</title>
+    <link rel="icon" href="web/imagenes/FitSync2.png" type="image/x-icon">
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css' rel='stylesheet'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' integrity='sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==' crossorigin='anonymous' referrerpolicy='no-referrer' />
     <link rel="stylesheet" href="web/css/vistaNormal.css">
@@ -69,7 +70,7 @@
                             <a class="nav-link" href="index.php?accion=ajustes">Ajustes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contacto</a>
+                            <a class="nav-link" href="index.php?accion=sobreMi">Sobre Mi</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?accion=cerrarSesion">Cerrar Sesión</a>
@@ -128,10 +129,10 @@
                         Dietas
                     </div>
                     <div class="col-md-6 contadores">
-                        <?php echo htmlspecialchars($cantidadEntrenamientos) ?>/7
+                        <?php echo htmlspecialchars($cantidadEntrenamientos) ?>
                     </div>
                     <div class="col-md-6 contadores">
-                        <?php echo htmlspecialchars($cantidadDietas) ?>/7
+                        <?php echo htmlspecialchars($cantidadDietas) ?>
                     </div>
                     <div class="col-md-6 enlaces-añadir">
                         <a href="index.php?accion=crearEntrenamiento" class="enlaces-añadir-img">
@@ -243,7 +244,7 @@
                                     <a class="nav-link" href="index.php?accion=ajustes">Ajustes</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Contacto</a>
+                                    <a class="nav-link" href="index.php?accion=sobreMi">Sobre Mi</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="index.php?accion=cerrarSesion">Cerrar Sesión</a>
@@ -270,7 +271,7 @@
                         Entrenamientos
                     </div>
                     <div class="col-md-12 contadores">
-                        <?php echo htmlspecialchars($cantidadEntrenamientos) ?>/7
+                        <?php echo htmlspecialchars($cantidadEntrenamientos) ?>
                     </div>
                     <div class="col-md-12 enlaces-añadir">
                         <a href="index.php?accion=crearEntrenamiento" class="enlaces-añadir-img">
@@ -281,7 +282,7 @@
                         Dietas
                     </div>
                     <div class="col-md-12 contadores">
-                        <?php echo htmlspecialchars($cantidadDietas) ?>/7
+                        <?php echo htmlspecialchars($cantidadDietas) ?>
                     </div>
                     <div class="col-md-12 enlaces-añadir">
                         <a href="index.php?accion=crearDieta" class="enlaces-añadir-img">

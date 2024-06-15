@@ -106,7 +106,7 @@ class PerfilesProfesionalesDAO
         $datos_contacto = $perfil->getDatosContacto();
         $trabajos_anteriores = $perfil->getTrabajosAnteriores();
 
-        $stmt->bind_param('issssiiis', $id_usuario, $imagen, $nombre_personal, $nombre_usuario_profesional, $descripcion_personal, $edad, $anos_experiencia, $datos_contacto, $trabajos_anteriores);
+        $stmt->bind_param('issssiiss', $id_usuario, $imagen, $nombre_personal, $nombre_usuario_profesional, $descripcion_personal, $edad, $anos_experiencia, $datos_contacto, $trabajos_anteriores);
 
         if ($stmt->execute()) {
             return $stmt->insert_id;

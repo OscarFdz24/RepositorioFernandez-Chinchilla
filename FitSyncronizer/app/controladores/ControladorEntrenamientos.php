@@ -11,91 +11,112 @@ class ControladorEntrenamientos
 
     public function crear()
     {
+        $error = null;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            //Recogida de datos del formulario
+            // Recogida de datos del formulario
             $id_usuario = Sesion::getUsuario()->getId();
             $dia = htmlentities($_POST['dia']);
             $rutina = htmlentities($_POST['rutina']);
             $grupo_muscular = htmlentities($_POST['grupo_muscular']);
 
-            //Conexion a la BD
-            $conexionDB = new ConexionBD(MYSQL_USER, MYSQL_PASS, MYSQL_HOST, MYSQL_DB);
-            $conn = $conexionDB->getConnexion();
-
-            //Instancia del DAO de entrenamientos
-            $entrenamientosDAO = new EntrenamientosDAO($conn);
-            $entrenamiento = new Entrenamiento();
-
-            //Asigno los datos al entrenamiento
-            $entrenamiento->setIdUsuario($id_usuario);
-            $entrenamiento->setDia($dia);
-            $entrenamiento->setRutina($rutina);
-            $entrenamiento->setGrupoMuscular($grupo_muscular);
-
-            //Condición para que si se inserta correctamente un entrenamiento, vuelva a redirigir a la vista correspondiente 
-            if ($entrenamientosDAO->insert($entrenamiento)) {
-                $rolUsuario = Sesion::getUsuario()->getRol();
-                if ($rolUsuario == "Normal") {
-                    header("location: index.php?accion=listarEntrenamientos");
-                    die();
-                } else if ($rolUsuario == "Profesional") {
-                    header("location: index.php?accion=listarEntrenamientos");
-                    die();
-                }
+            // Validaciones
+            if (empty($rutina) || empty($grupo_muscular)) {
+                $error = "Todos los campos son obligatorios";
+            } elseif (strlen($rutina) > 1500) {
+                $error = "La rutina no puede tener más de 1500 caracteres";
+            } elseif (strlen($grupo_muscular) > 100) {
+                $error = "El grupo muscular no puede tener más de 100 caracteres";
             } else {
-                $error = "No se ha podido insertar el entrenamiento";
+                // Conexion a la BD
+                $conexionDB = new ConexionBD(MYSQL_USER, MYSQL_PASS, MYSQL_HOST, MYSQL_DB);
+                $conn = $conexionDB->getConnexion();
+
+                // Instancia del DAO de entrenamientos
+                $entrenamientosDAO = new EntrenamientosDAO($conn);
+                $entrenamiento = new Entrenamiento();
+
+                // Asigno los datos al entrenamiento
+                $entrenamiento->setIdUsuario($id_usuario);
+                $entrenamiento->setDia($dia);
+                $entrenamiento->setRutina($rutina);
+                $entrenamiento->setGrupoMuscular($grupo_muscular);
+
+                // Condición para que si se inserta correctamente un entrenamiento, vuelva a redirigir a la vista correspondiente 
+                if ($entrenamientosDAO->insert($entrenamiento)) {
+                    $rolUsuario = Sesion::getUsuario()->getRol();
+                    if ($rolUsuario == "Normal" || $rolUsuario == "Profesional") {
+                        header("location: index.php?accion=listarEntrenamientos");
+                        die();
+                    }
+                } else {
+                        $error = "No se ha podido insertar el entrenamiento";
+                        header("location: index.php?accion=crearEntrenamiento");
+                        die();
+                }
             }
         }
-        //Vista con metodo GET
+        // Vista con metodo GET
         require 'app/vistas/crearEntrenamiento.php';
     }
 
     public function editarEntrenamiento()
-    {
-        // Verificar que se recibe un ID
-        if (!isset($_GET['id'])) {
-            echo "Error: No se ha proporcionado un ID";
-            return;
-        }
+{
+    // Verificar que se recibe un ID
+    if (!isset($_GET['id'])) {
+        echo "Error: No se ha proporcionado un ID";
+        return;
+    }
 
-        $id = $_GET['id'];
-        $conexionDB = new ConexionBD(MYSQL_USER, MYSQL_PASS, MYSQL_HOST, MYSQL_DB);
-        $conn = $conexionDB->getConnexion();
-        $entrenamientosDAO = new EntrenamientosDAO($conn);
+    $id = $_GET['id'];
+    $conexionDB = new ConexionBD(MYSQL_USER, MYSQL_PASS, MYSQL_HOST, MYSQL_DB);
+    $conn = $conexionDB->getConnexion();
+    $entrenamientosDAO = new EntrenamientosDAO($conn);
+    $error = null;
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $id_usuario = Sesion::getUsuario()->getId();
-            $dia = htmlentities($_POST['dia']);
-            $rutina = htmlentities($_POST['rutina']);
-            $grupo_muscular = isset($_POST['grupo_muscular']) ? 1 : 0;
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $id_usuario = Sesion::getUsuario()->getId();
+        $dia = htmlentities($_POST['dia']);
+        $rutina = htmlentities($_POST['rutina']);
+        $grupo_muscular = htmlentities($_POST['grupo_muscular']);
 
+        // Validaciones
+        if (empty($dia) || empty($rutina) || empty($grupo_muscular)) {
+            $error = "Todos los campos son obligatorios.";
+        } elseif (strlen($rutina) > 1500) {
+            $error = "La rutina no puede tener más de 1500 caracteres.";
+        } elseif (strlen($grupo_muscular) > 100) {
+            $error = "El grupo muscular no puede tener más de 100 caracteres.";
+        } else {
+            // Si las validaciones pasan, se procede con la actualización del entrenamiento
             $entrenamiento = new Entrenamiento();
-
-            //Asigno los datos al entrenamiento
+            $entrenamiento->setId($id);
             $entrenamiento->setIdUsuario($id_usuario);
             $entrenamiento->setDia($dia);
             $entrenamiento->setRutina($rutina);
             $entrenamiento->setGrupoMuscular($grupo_muscular);
-            var_dump("1S");
-            if ($entrenamientosDAO->update($entrenamiento)) { // Cambia insert por update
-                var_dump("2S");
+
+            if ($entrenamientosDAO->update($entrenamiento)) {
                 header("location: index.php?accion=listarEntrenamientos");
                 die();
             } else {
-                $error = "No se ha podido actualizar el entrenamiento";
+                $error = "No se ha podido actualizar el entrenamiento.";
             }
-        } else {
-            $entrenamiento = $entrenamientosDAO->getById($id);
-            if (!$entrenamiento) {
-                echo "Entrenamiento no encontrada";
-                return;
-            }
-            require 'app/vistas/vistaEditarEntrenamiento.php'; // Asegúrate de que esta vista exista
+        }
+    } else {
+        $entrenamiento = $entrenamientosDAO->getById($id);
+        if (!$entrenamiento) {
+            echo "Entrenamiento no encontrado";
+            return;
         }
     }
 
+    // Si hay un error o es GET, cargar la vista de edición con los datos actuales del entrenamiento y el mensaje de error si lo hay
+    require 'app/vistas/vistaEditarEntrenamiento.php';
+}
+
     public function borrar()
     {
+        $mensaje="";
         // Verificar que se recibe un ID
         if (!isset($_GET['id'])) {
             echo "Error: No se ha proporcionado un ID";
@@ -119,6 +140,7 @@ class ControladorEntrenamientos
                 header("location: index.php?accion=listarEntrenamientos");
                 die();
             }else if(Sesion::getUsuario()->getRol() == "Administrador"){
+                $mensaje="Se ha borrado el entrenamiento";
                 header("location: index.php?accion=vistaAdmin");
                 die();
             }

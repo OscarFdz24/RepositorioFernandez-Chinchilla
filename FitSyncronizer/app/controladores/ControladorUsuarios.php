@@ -299,6 +299,7 @@ public function login()
     public function eliminarUsuario()
     {
         $error = null;
+        $mensaje=null;
         if (!Sesion::existeSesion()) {
             header('Location: index.php');
             die();
@@ -322,6 +323,7 @@ public function login()
                     setcookie('usuario', '', time() - 3600, '/'); // Expira la cookie
                 }
                 if (Sesion::getUsuario()->getRol() == "Administrador") {
+                    $mensaje="Se ha actualizado el usuario";
                     header('location: index.php?accion=vistaAdmin');
                     die();
                 } else {
@@ -341,6 +343,7 @@ public function login()
     public function modificarUsuarioAdmin()
     {
         $error = null;
+        $mensaje=null;
         // Verificar si existe la sesión
         if (!Sesion::existeSesion()) {
             header('Location: index.php');
@@ -362,6 +365,7 @@ public function login()
         $usuario->setRol("Administrador");
         // Actualizar el usuario en la base de datos
         if ($usuariosDAO->update($usuario)) {
+            $mensaje="Se ha actualizado el usuario";
             header("location: index.php?accion=vistaAdmin");
             die();
         } else {

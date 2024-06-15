@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de sesión | FitSyncronizer</title>
+    <title>FitSyncronizer | Registro Usuario</title>
+    <link rel="icon" href="web/imagenes/FitSync2.png" type="image/x-icon">
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css' rel='stylesheet'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' integrity='sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==' crossorigin='anonymous' referrerpolicy='no-referrer' />
     <link rel="stylesheet" href="web/css/registro.css">
@@ -20,7 +21,6 @@
             <div class="nav-links">
                 <a class="nav-link active" aria-current="page" href="index.php?accion=inicio">Iniciar Sesión</a> <span class="separador">|</span>
                 <a class="nav-link" href="index.php?accion=registrar">Registrarse</a><span class="separador">|</span>
-                <a class="nav-link" href="#">Sobre mí</a>
             </div>
         </nav>
     </header>

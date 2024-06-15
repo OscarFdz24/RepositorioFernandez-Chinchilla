@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>FitSyncronizer | Crear perfil</title>
+    <link rel="icon" href="web/imagenes/FitSync2.png" type="image/x-icon">
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css' rel='stylesheet'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' integrity='sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==' crossorigin='anonymous' referrerpolicy='no-referrer' />
     <!--Links para utilizar JQTextEditor-->
@@ -75,7 +76,7 @@
                             <a class="nav-link" href="index.php?accion=ajustes">Ajustes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contacto</a>
+                            <a class="nav-link" href="index.php?accion=sobreMi">Sobre Mi</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?accion=cerrarSesion">Cerrar Sesión</a>
@@ -111,7 +112,7 @@
             <hr>
             <div class="sidebar__SecondaryMenu">
                 <a href="index.php?accion=ajustes" class="sidebar__SecondaryMenu__item">Ajustes</a>
-                <a href="" class="sidebar__SecondaryMenu__item">Ayuda</a>
+                <a href="index.php?accion=sobreMi" class="sidebar__SecondaryMenu__item">Sobre Mi</a>
                 <a href="index.php?accion=cerrarSesion" class="sidebar__SecondaryMenu__item">Cerrar Sesión</a>
             </div>
         </div>
@@ -260,7 +261,7 @@
                                     <a class="nav-link" href="index.php?accion=ajustes">Ajustes</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Contacto</a>
+                                    <a class="nav-link" href="index.php?accion=sobreMi">Sobre Mi</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="index.php?accion=cerrarSesion">Cerrar Sesión</a>
@@ -344,35 +345,7 @@
     <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js'></script>
     <script src="web/archivosJS/date.js"></script>
     <!-- Inicializar el editor de texto jQuery TextEditor -->
-    <script>
-        $(document).ready(function() {
-            // Inicializar el plugin jQuery TE en el textarea con id "descripcion"
-            $("#descripcion_personal").jqte({
-                'format': false,
-                'fsize': true,
-                'color': true,
-                'sub': false,
-                'sup': false,
-                'unlink': false,
-                'outdent': false,
-                'indent': false,
-                'image': false,
-                'removeformat': false,
-                'format': false,
-                'source': false,
-                'strike': false,
-                'table': false,
-                'left': true,
-                'center': false,
-                'right': false,
-                'rule': false,
-                'link': false,
-                'lists': false,
-                'ol': false,
-                'ul': false,
-            });
-        });
-    </script>
+    
 </body>
 
 </html>

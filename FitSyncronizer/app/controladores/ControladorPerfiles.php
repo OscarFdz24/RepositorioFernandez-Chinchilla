@@ -140,6 +140,7 @@ class ControladorPerfiles
     // Método para borrar un perfil profesional existente
     public function borrar()
     {
+        $mensaje=null;
         // Verificar que se recibe un ID
         if (!isset($_GET['id'])) {
             echo "Error: No se ha proporcionado un ID";
@@ -168,8 +169,8 @@ class ControladorPerfiles
                     unlink($imagenPath);
                 }
                 if (Sesion::getUsuario()->getRol() == "Administrador") {
+                    $mensaje="Se ha borrado el perfil";
                     header("location: index.php?accion=vistaAdmin");
-                    var_dump("3");
                     die();
                 } else {
                     header("location: index.php?accion=miPerfil");

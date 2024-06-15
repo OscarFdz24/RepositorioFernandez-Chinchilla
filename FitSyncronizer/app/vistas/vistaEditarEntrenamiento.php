@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>FitSyncronizer | Modificar Entrenamiento</title>
+    <link rel="icon" href="web/imagenes/FitSync2.png" type="image/x-icon">
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css' rel='stylesheet'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' integrity='sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==' crossorigin='anonymous' referrerpolicy='no-referrer' />
     <!--Links para utilizar JQTextEditor-->
@@ -14,7 +15,7 @@
 
     <link rel="stylesheet" href="web/css/vistaNormal.css">
     <link rel="stylesheet" href="web/css/estilosComun.css">
-    <link rel="stylesheet" href="web/css/crearDieta.css">
+    <link rel="stylesheet" href="web/css/crearEditarStyles.css">
 </head>
 
 <body>
@@ -74,7 +75,7 @@
                             <a class="nav-link" href="index.php?accion=ajustes">Ajustes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contacto</a>
+                            <a class="nav-link" href="index.php?accion=sobreMi">Sobre Mi</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?accion=cerrarSesion">Cerrar Sesión</a>
@@ -110,43 +111,48 @@
             <hr>
             <div class="sidebar__SecondaryMenu">
                 <a href="index.php?accion=ajustes" class="sidebar__SecondaryMenu__item">Ajustes</a>
-                <a href="" class="sidebar__SecondaryMenu__item">Ayuda</a>
+                <a href="index.php?accion=sobreMi" class="sidebar__SecondaryMenu__item">Sobre Mi</a>
                 <a href="index.php?accion=cerrarSesion" class="sidebar__SecondaryMenu__item">Cerrar Sesión</a>
             </div>
         </div>
         <section class="full-view-content">
             <!-- Contenedor para el cotenido principal de la página -->
             <div id="content-container">
-                <div class="row">
+            <?php if (!empty($error)) : ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $error; ?>
+                </div>
+            <?php endif; ?>
+            <div class="row">
                     <div class="form-container">
                         <h1>Formulario de Edición de Entrenamiento</h1>
-                        <form action="index.php?accion=crearEntrenamiento" method="post" class="training-form">
+                        <form action="index.php?accion=editarEntrenamiento&id=<?= $entrenamiento->getId() ?>" method="post" class="training-form">
                             <div class="form-group">
                                 <label for="dia">Día:</label>
                                 <select name="dia" id="dia" required>
-                                    <option value="Lunes">Lunes</option>
-                                    <option value="Martes">Martes</option>
-                                    <option value="Miércoles">Miércoles</option>
-                                    <option value="Jueves">Jueves</option>
-                                    <option value="Viernes">Viernes</option>
-                                    <option value="Sábado">Sábado</option>
-                                    <option value="Domingo">Domingo</option>
+                                    <option value="Lunes" <?= ($entrenamiento->getDia() == 'Lunes') ? 'selected' : '' ?>>Lunes</option>
+                                    <option value="Martes" <?= ($entrenamiento->getDia() == 'Martes') ? 'selected' : '' ?>>Martes</option>
+                                    <option value="Miércoles" <?= ($entrenamiento->getDia() == 'Miércoles') ? 'selected' : '' ?>>Miércoles</option>
+                                    <option value="Jueves" <?= ($entrenamiento->getDia() == 'Jueves') ? 'selected' : '' ?>>Jueves</option>
+                                    <option value="Viernes" <?= ($entrenamiento->getDia() == 'Viernes') ? 'selected' : '' ?>>Viernes</option>
+                                    <option value="Sábado" <?= ($entrenamiento->getDia() == 'Sábado') ? 'selected' : '' ?>>Sábado</option>
+                                    <option value="Domingo" <?= ($entrenamiento->getDia() == 'Domingo') ? 'selected' : '' ?>>Domingo</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="rutina">Rutina:</label>
-                                <textarea style="width: 90%;" name="rutina" id="rutina" rows="18" maxlength="1250" required></textarea>
+                                <textarea style="width: 90%;" name="rutina" id="rutina" rows="18" maxlength="1500" required><?= $entrenamiento->getRutina() ?></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="grupo_muscular">Grupo Muscular:</label>
-                                <input type="text" name="grupo_muscular" value="<?= $entrenamiento->getGrupoMuscular() ?>" id="grupo_muscular" maxlength="250" required>
+                                <input type="text" name="grupo_muscular" id="grupo_muscular" value="<?= $entrenamiento->getGrupoMuscular() ?>" maxlength="100" required>
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Guardar" class="submit-button">
                             </div>
                         </form>
                     </div>
-                </div>
+            </div>
             </div>
             </div>
             <footer>
@@ -246,7 +252,7 @@
                                     <a class="nav-link" href="index.php?accion=ajustes">Ajustes</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Contacto</a>
+                                    <a class="nav-link" href="index.php?accion=sobreMi">Sobre Mi</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="index.php?accion=cerrarSesion">Cerrar Sesión</a>
@@ -259,6 +265,11 @@
         </header>
         <main class="main_small">
             <div id="content-container">
+            <?php if (!empty($error)) : ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $error; ?>
+                </div>
+            <?php endif; ?>
                 <div class="row row-small">
                     <div class="form-container">
                         <h1>Formulario de Edición de Entrenamiento</h1>
@@ -277,11 +288,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="rutina">Rutina:</label>
-                                <textarea style="width: 90%;" name="rutina" id="rutina" rows="18" maxlength="1250" required></textarea>
+                                <textarea style="width: 90%;" name="rutina" id="rutina" rows="18" maxlength="1500" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="grupo_muscular">Grupo Muscular:</label>
-                                <input type="text" name="grupo_muscular" value="<?= $entrenamiento->getGrupoMuscular() ?>" id="grupo_muscular" maxlength="250" required>
+                                <input type="text" name="grupo_muscular" value="<?= $entrenamiento->getGrupoMuscular() ?>" id="grupo_muscular" maxlength="100" required>
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Guardar" class="submit-button">
