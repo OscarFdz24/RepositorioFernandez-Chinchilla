@@ -137,7 +137,7 @@
                                 <input type="text" id="nombre_usuario_profesional" name="nombre_usuario_profesional" maxlength="100" required>
                             </div>
                             <div>
-                                <label for="descripcion_personal">Descripción Personal:</label>
+                                <label for="descripcion_personal">Descripción Personal:</label><br>
                                 <textarea id="descripcion_personal" name="descripcion_personal" maxlength="1250" required></textarea>
                             </div>
                             <div>
@@ -207,9 +207,8 @@
                         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                             <i class="fas fa-bars"></i>
                         </button>
-                        <a href=""><i class="fa-solid fa-gear"></i></a>
-                        <a href=""><i class="fa-regular fa-circle-user"></i></a>
-                        <a href=""><i class="fa-solid fa-right-from-bracket"></i></a>
+                        <a href="index.php?accion=ajustes"><i class="fa-regular fa-circle-user"></i></a>
+                        <a href="index.php?accion=cerrarSesion"><i class="fa-solid fa-right-from-bracket"></i></a>
                     </div>
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                         <div class="offcanvas-header">

@@ -18,7 +18,7 @@
             </a>
             <div class="nav-links">
                 <a class="nav-link active" aria-current="page" href="index.php?accion=inicio">Iniciar Sesión</a> <span class="separador">|</span>
-                <a class="nav-link" href="index.php?accion=registrar">Registrarse</a><span class="separador">|</span>
+                <a class="nav-link" href="index.php?accion=registrar">Registrarse</a>
             </div>
         </nav>
     </header>

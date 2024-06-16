@@ -128,7 +128,8 @@
                     <div class="perfil-container">
                         <?php if ($perfil === null) : ?>
                             <h2 class="crear-perfil">Aún no has creado tu perfil profesional.</h2>
-                            <h3 class="crear-perfil">Haz click en el siguiente botón para crear tu perfil profesional y darte a conocer a todo el mundo.</h3>
+                            <h3 class="crear-perfil">Haz click en el siguiente botón para crear tu perfil profesional y darte a conocer a todo el mundo.</h3><br>
+                            <h3 class="crear-perfil">No pierdas la oportunidad de destacar en tu campo: ¡crea tu perfil ahora y muestra tu talento al mundo!</h3>
                             <div class="buttons buttons--modifier"> <a href="index.php?accion=crearPerfil"><i class="fa-solid fa-pen-to-square"></i> Crear perfil</a></div>
                         <?php else : ?>
                             <h2>Mi Perfil Profesional</h2>
@@ -194,9 +195,8 @@
                         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                             <i class="fas fa-bars"></i>
                         </button>
-                        <a href=""><i class="fa-solid fa-gear"></i></a>
-                        <a href=""><i class="fa-regular fa-circle-user"></i></a>
-                        <a href=""><i class="fa-solid fa-right-from-bracket"></i></a>
+                        <a href="index.php?accion=ajustes"><i class="fa-regular fa-circle-user"></i></a>
+                        <a href="index.php?accion=cerrarSesion"><i class="fa-solid fa-right-from-bracket"></i></a>
                     </div>
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                         <div class="offcanvas-header">
@@ -266,6 +266,7 @@
                         <?php if ($perfil === null) : ?>
                             <h2 class="crear-perfil">Aún no has creado tu perfil profesional.</h2>
                             <h3 class="crear-perfil">Haz click en el siguiente botón para crear tu perfil profesional y darte a conocer a todo el mundo.</h3>
+                            <h3 class="crear-perfil">No pierdas la oportunidad de destacar en tu campo: ¡crea tu perfil ahora y muestra tu talento al mundo!</h3>
                             <div class="buttons buttons--modifier"> <a href="index.php?accion=crearPerfil"><i class="fa-solid fa-pen-to-square"></i> Crear perfil</a></div>
                         <?php else : ?>
                             <h2>Mi Perfil Profesional</h2>
@@ -281,7 +282,7 @@
                                     <a href="index.php?accion=eliminarPerfil&id=<?php echo $perfil->getId() ?>"><i class="fa-solid fa-pen-to-square"></i> Eliminar perfil</a>
                                 </div>
                                 <div class="buttons buttons--modifier">
-                                    <a href="index.php?accion=modificarPerfil&id=<?php echo $perfil->getId() ?>"><i class="fa-solid fa-pen-to-square"></i> Modificar perfil</a>
+                                    <a href="index.php?accion=editarPerfil&id=<?php echo $perfil->getId() ?>"><i class="fa-solid fa-pen-to-square"></i> Modificar perfil</a>
                                 </div>
                             </div>
                         <?php endif; ?>

@@ -29,13 +29,17 @@
 .crear-perfil {
     color: white;
 }
-
+.col-4 .card{
+    background-color: rgb(120, 121, 122);
+    padding-top: 1rem;
+}
 .perfil-img {
     max-width: 60%;
     min-width: 60%;
     max-height: 250px;
     min-height: 250px;
     border-radius: 50%;
+    border:2px solid black
 }
 h3{
     padding-top: 1rem;
