@@ -4,6 +4,9 @@ https://github.com/OscarFdz24/RepositorioFernandez-Chinchilla
 Enlace a la página desde el hosting:
 https://fitsyncronizer.000webhostapp.com
 
+Usuario admin, iniciar sesión:
+admin, admin@gmail.com, 1234
+
 Hay veces que el enlace del hosting da error, probar varias veces en caso de error.
 
 Notas: en el hosting, toda la logica de la pagina funciona, exceptuando que por alguna razon hay redireccionamientos que no funcionan pero las acciones se cumplen, aunque en local si funciona todo.
