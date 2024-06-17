@@ -65,7 +65,7 @@ class PerfilesProfesionalesDAO
     // Función para obtener todos los perfiles ordenados por nombreUsuario de la A a la Z
     public function getAllOrder(): array
     {
-        // Preparar la consulta SQL con la cláusula ORDER BY nombreUsuario ASC
+        
         if (!$stmt = $this->conn->prepare("SELECT * FROM perfil_profesional ORDER BY nombre_usuario_profesional DESC")) {
             echo "Error en la SQL: " . $this->conn->error;
             return [];
@@ -75,15 +75,12 @@ class PerfilesProfesionalesDAO
         $stmt->execute();
         $result = $stmt->get_result();
 
-        // Crear el array para almacenar los perfiles
         $array_perfiles = array();
 
-        // Obtener los resultados y almacenarlos en el array
         while ($perfil = $result->fetch_object(PerfilProfesional::class)) {
             $array_perfiles[] = $perfil;
         }
 
-        // Devolver el array de perfiles
         return $array_perfiles;
     }
     //Función para insertar un perfil

@@ -1,0 +1,7 @@
+Enlace al repositorio de GitHub:
+https://github.com/OscarFdz24/RepositorioFernandez-Chinchilla
+
+Enlace a la página desde el hosting:
+https://fitsyncronizer.000webhostapp.com
+
+Notas: en el hosting, toda la logica de la pagina funciona, exceptuando que por alguna razon hay redireccionamientos que no funcionan pero las acciones se cumplen, aunque en local si funciona todo.

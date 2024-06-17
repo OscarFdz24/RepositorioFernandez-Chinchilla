@@ -100,7 +100,7 @@ class ControladorPerfiles
             $datosContacto = htmlspecialchars($_POST['datos_contacto']);
             $trabajosAnteriores = htmlspecialchars($_POST['trabajos_anteriores']);
 
-            // Manejar subida de imagen
+            // Manejo de la subida de imagen
             $imagen = $perfil->getImagen();
             if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
                 $imagenPath = 'web/fotosPerfiles/' . basename($_FILES['imagen']['name']);
@@ -153,7 +153,6 @@ class ControladorPerfiles
         $conexionDB = new ConexionBD(MYSQL_USER, MYSQL_PASS, MYSQL_HOST, MYSQL_DB);
         $conn = $conexionDB->getConnexion();
 
-        // Instancia del DAO de perfiles
         $perfilesDAO = new PerfilesProfesionalesDAO($conn);
 
         // Obtener el perfil para obtener el nombre de la imagen
@@ -193,15 +192,11 @@ class ControladorPerfiles
         $conexionDB = new ConexionBD(MYSQL_USER, MYSQL_PASS, MYSQL_HOST, MYSQL_DB);
         $conn = $conexionDB->getConnexion();
 
-        // Instancia del DAO de perfiles
         $perfilesDAO = new PerfilesProfesionalesDAO($conn);
-
-        // Obtener todos los perfiles
         $perfiles = $perfilesDAO->getAll();
-
-        // Creas la instancia de LikesDAO
         $likeDAO = new LikesDAO($conn);
-        // Obtén la cantidad de perfiles en el array
+
+        // Obtener la cantidad de perfiles en el array
         $cantidadPerfiles = count($perfiles);
 
         require 'app/vistas/listarPerfiles.php';

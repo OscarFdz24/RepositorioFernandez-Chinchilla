@@ -68,9 +68,6 @@ class UsuariosDAO
             return null;
         }
     }
-    /**
-     * Obtiene todos los usuarios de la tabla mensajes
-     */
     public function getAll(): array
     {
         if (!$stmt = $this->conn->prepare("SELECT * FROM usuario")) {

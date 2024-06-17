@@ -149,7 +149,7 @@
                 <div id="curriculum-container" class="container-fluid">
                     <div class="row p-2">
                         <div class="col-6" style="text-align: center;">
-                            <img id="cv__imagen" src="web/imagenes/FitSync2.png" alt="texto">
+                            <img id="cv__imagen" src="web/imagenes/Oscar.jpg" alt="texto">
                             <div class="nombre">
                                 <h3>Óscar Fernández-Chinchilla López</h3>
                             </div>
@@ -383,7 +383,7 @@
             <div id="curriculum-container" class="container-fluid">
                     <div class="row p-2">
                         <div class="col-12" style="text-align: center;">
-                            <img id="cv__imagen" src="web/imagenes/FitSync2.png" alt="texto">
+                            <img id="cv__imagen" src="web/imagenes/Oscar.jpg" alt="texto">
                             <div class="nombre">
                                 <h3>Óscar Fernández-Chinchilla López</h3>
                             </div>

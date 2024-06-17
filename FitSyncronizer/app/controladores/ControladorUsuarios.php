@@ -52,7 +52,7 @@ class ControladorUsuarios
             $rol = "Profesional";
         }
         
-        //Condiciones para que se rellenes todos los campos correctamente
+        //Condiciones para que se rellenen todos los campos correctamente
         if (empty($nombre) || empty($nombreU) || empty($email)) {
             $error = "Nombre, nombre de usuario y correo electrónico son obligatorios";
         } elseif (strlen($nombre) > 200 || strlen($nombreU) > 200 || strlen($email) > 200) {
@@ -130,7 +130,6 @@ public function login()
                 // Creamos la cookie para que nos recuerde por 1 semana
                 setcookie('usuario', $nombreUsuario, time() + 7 * 24 * 60 * 60, '/');
 
-                //Dependiendo el rol lo redirige a una vista normal o profesional
                 if ($usuario->getRol() == "Normal") {
                     header('location: index.php?accion=vistaNormal');
                 } elseif ($usuario->getRol() == "Profesional") {
@@ -207,9 +206,9 @@ public function login()
         $perfilesDAO = new PerfilesProfesionalesDAO($conn);
         $perfiles = $perfilesDAO->getAllOrder();
 
-        // Obtén la cantidad de entrenamientos en el array
+        // Obtener la cantidad de entrenamientos en el array
         $cantidadDietas = count($dietas);
-        // Obtén la cantidad de entrenamientos en el array
+        // Obtener la cantidad de entrenamientos en el array
         $cantidadEntrenamientos = count($entrenamientos);
         require 'app/vistas/vistaAdministrador.php';
     }
@@ -231,7 +230,7 @@ public function login()
         setlocale(LC_TIME, 'es_ES.UTF-8', 'es_ES', 'spanish');
         $timestamp = strtotime($usuario->getFecha());
 
-        // Usar strftime para formatear la fecha en español
+        // Formatear la fecha en español
         $fechaFormateada = strftime("%d de %B de %Y, %I:%M %p", $timestamp);
 
         require 'app/vistas/vistaAjustes.php';
@@ -250,7 +249,6 @@ public function login()
         $usuariosDAO = new UsuariosDAO($conn);
         $usuario = $usuariosDAO->getById($id_usuario);
 
-        // Verificar si el formulario ha sido enviado
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Recoger los datos del formulario
             $nombre = $_POST['nombre'];
@@ -311,12 +309,12 @@ public function login()
         $id_usuario_sesion = Sesion::getUsuario()->getId();
 
         // Obtener el ID del usuario que se intenta eliminar desde la URL
-        // Por ejemplo, si la URL es eliminar_usuario.php?id=1, puedes obtener el ID así:
         $id_usuario_eliminar = $_GET['id'];
 
         // Verificar si el usuario tiene permisos para eliminar la cuenta
         if ($id_usuario_sesion == $id_usuario_eliminar || Sesion::getUsuario()->getRol() == "Administrador") {
-            // Actualizar el usuario en la base de datos
+
+            //Borrar el usuario
             if ($usuariosDAO->delete($id_usuario_eliminar)) {
                 // Eliminar la cookie
                 if (isset($_COOKIE['usuario'])) {

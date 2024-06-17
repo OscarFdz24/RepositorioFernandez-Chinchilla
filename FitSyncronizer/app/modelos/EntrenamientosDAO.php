@@ -47,7 +47,7 @@ class EntrenamientosDAO
     }
     public function getAllOrder(): array|null
     {
-        // Preparar la consulta SQL con la cláusula ORDER BY id_usuario ASC
+
         if (!$stmt = $this->conn->prepare("SELECT * FROM entrenamiento ORDER BY id_usuario ASC")) {
             echo "Error en la SQL: " . $this->conn->error;
             return null;
@@ -57,7 +57,6 @@ class EntrenamientosDAO
         $result = $stmt->get_result();
         $array_entrenamientos = array();
 
-        // Obtener los resultados y almacenarlos en el array
         while ($entrenamiento = $result->fetch_object(Entrenamiento::class)) {
             $array_entrenamientos[] = $entrenamiento;
         }

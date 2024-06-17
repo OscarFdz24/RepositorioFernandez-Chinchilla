@@ -110,7 +110,6 @@ class ControladorEntrenamientos
         }
     }
 
-    // Si hay un error o es GET, cargar la vista de edición con los datos actuales del entrenamiento y el mensaje de error si lo hay
     require 'app/vistas/vistaEditarEntrenamiento.php';
 }
 
@@ -156,7 +155,7 @@ class ControladorEntrenamientos
         $entrenamientosDAO = new EntrenamientosDAO($conn);
         $entrenamientos = $entrenamientosDAO->getAllByIdUsuario($id_usuario);
 
-        // Obtén la cantidad de entrenamientos en el array
+        // Obtener la cantidad de entrenamientos en el array
         $cantidadEntrenamientos = count($entrenamientos);
         require 'app/vistas/listarEntrenamientos.php';
     }

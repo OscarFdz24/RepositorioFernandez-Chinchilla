@@ -21,7 +21,7 @@ class ControladorLikes
         } else {
             $response = ['respuesta' => 'error'];
         }
-        ob_end_clean(); // Limpia el buffer de salida para asegurarse de que no haya ningún otro contenido
+        ob_end_clean(); // Limpia el buffer de salida para asegurarse de que no haya ningún otro contenido, es nesario para que funcione el script con AJAX
         echo json_encode($response);
     }
 

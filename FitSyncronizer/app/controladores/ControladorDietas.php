@@ -147,7 +147,7 @@ class ControladorDietas
         $conn = $conexionDB->getConnexion();
         $dietasDAO = new DietasDAO($conn);
         $dietas = $dietasDAO->getAllByIdUsuario($id_usuario);
-        // Obtén la cantidad de entrenamientos en el array
+        // Obtener la cantidad de entrenamientos en el array
         $cantidadDietas = count($dietas);
         require 'app/vistas/listarDietas.php';
     }
