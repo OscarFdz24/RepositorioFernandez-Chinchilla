@@ -133,13 +133,25 @@
                             <div class="buttons buttons--modifier"> <a href="index.php?accion=crearPerfil"><i class="fa-solid fa-pen-to-square"></i> Crear perfil</a></div>
                         <?php else : ?>
                             <h2>Mi Perfil Profesional</h2>
-                            <img src="web/fotosPerfiles/<?= htmlspecialchars($perfil->getImagen()) ?>" alt="Foto de Perfil" class="perfil-img">
-                            <p><strong>Nombre Personal:</strong> <?= htmlspecialchars($perfil->getNombrePersonal()) ?></p>
-                            <p><strong>Nombre de Usuario Profesional:</strong> <?= htmlspecialchars($perfil->getNombreUsuarioProfesional()) ?></p>
-                            <p><strong>Edad:</strong> <?= htmlspecialchars($perfil->getEdad()) ?></p>
-                            <p><strong>Años de Experiencia:</strong> <?= htmlspecialchars($perfil->getAnosExperiencia()) ?></p>
-                            <p><strong>Datos de Contacto:</strong> <?= htmlspecialchars($perfil->getDatosContacto()) ?></p>
-                            <p><strong>Trabajos Anteriores:</strong> <?= htmlspecialchars($perfil->getTrabajosAnteriores()) ?></p>
+                            <div class="card data-perfil__card">
+                                <div class="card__body" style="background-color:black;">
+                                    <img src="web/fotosPerfiles/<?= htmlspecialchars($perfil->getImagen()) ?>" alt="Foto de Perfil" class="perfil-img">
+                                    <p><strong>Nombre Personal:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getNombrePersonal()) ?></p>
+                                    <p><strong>Nombre de Usuario Profesional:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getNombreUsuarioProfesional()) ?></p>
+                                    <p><strong>Edad:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getEdad()) ?></p>
+                                    <p><strong>Descripción:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getDescripcionPersonal()) ?></p>
+                                    <p><strong>Años de Experiencia:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getAnosExperiencia()) ?></p>
+                                    <p><strong>Datos de Contacto:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getDatosContacto()) ?></p>
+                                    <p><strong>Trabajos Anteriores:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getTrabajosAnteriores()) ?></p>
+                                </div>
+                            </div>
                             <div class="buttons-container">
                                 <div class="buttons buttons--delete">
                                     <a href="index.php?accion=eliminarPerfil&id=<?php echo $perfil->getId() ?>"><i class="fa-solid fa-pen-to-square"></i> Eliminar perfil</a>
@@ -270,13 +282,25 @@
                             <div class="buttons buttons--modifier"> <a href="index.php?accion=crearPerfil"><i class="fa-solid fa-pen-to-square"></i> Crear perfil</a></div>
                         <?php else : ?>
                             <h2>Mi Perfil Profesional</h2>
-                            <img src="web/fotosPerfiles/<?= htmlspecialchars($perfil->getImagen()) ?>" alt="Foto de Perfil" class="perfil-img">
-                            <p><strong>Nombre Personal:</strong> <?= htmlspecialchars($perfil->getNombrePersonal()) ?></p>
-                            <p><strong>Nombre de Usuario Profesional:</strong> <?= htmlspecialchars($perfil->getNombreUsuarioProfesional()) ?></p>
-                            <p><strong>Edad:</strong> <?= htmlspecialchars($perfil->getEdad()) ?></p>
-                            <p><strong>Años de Experiencia:</strong> <?= htmlspecialchars($perfil->getAnosExperiencia()) ?></p>
-                            <p><strong>Datos de Contacto:</strong> <?= htmlspecialchars($perfil->getDatosContacto()) ?></p>
-                            <p><strong>Trabajos Anteriores:</strong> <?= htmlspecialchars($perfil->getTrabajosAnteriores()) ?></p>
+                            <div class="card data-perfil__card ">
+                                <div class="card__body" style="background-color:black;">
+                                    <img src="web/fotosPerfiles/<?= htmlspecialchars($perfil->getImagen()) ?>" alt="Foto de Perfil" class="perfil-img">
+                                    <p><strong>Nombre Personal:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getNombrePersonal()) ?></p>
+                                    <p><strong>Nombre de Usuario Profesional:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getNombreUsuarioProfesional()) ?></p>
+                                    <p><strong>Edad:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getEdad()) ?></p>
+                                    <p><strong>Descripción:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getDescripcionPersonal()) ?></p>
+                                    <p><strong>Años de Experiencia:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getAnosExperiencia()) ?></p>
+                                    <p><strong>Datos de Contacto:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getDatosContacto()) ?></p>
+                                    <p><strong>Trabajos Anteriores:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getTrabajosAnteriores()) ?></p>
+                                </div>
+                            </div>
                             <div>
                                 <div class="buttons buttons--delete">
                                     <a href="index.php?accion=eliminarPerfil&id=<?php echo $perfil->getId() ?>"><i class="fa-solid fa-pen-to-square"></i> Eliminar perfil</a>

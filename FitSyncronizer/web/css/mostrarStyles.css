@@ -40,6 +40,21 @@
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
 }
+.data-perfil__card{
+    background-color: #fff!important;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+.datos{
+    background-color: white;
+    color: black;
+    margin: 1rem!important;
+    padding: 1rem!important;
+    border-radius: 10px;
+}
 .buttons-container{
     text-align: center;
 }

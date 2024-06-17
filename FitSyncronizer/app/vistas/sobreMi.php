@@ -129,7 +129,7 @@
             <p><?= Sesion::getUsuario()->getTelefono() ?></p>
             <hr class="separador">
             <div class="PrimaryMenu">
-                <a href=""><i class="fa-solid fa-house"></i> Inicio</a>
+                <a href="index.php?accion=vistaNormal"><i class="fa-solid fa-house"></i> Inicio</a>
                 <a href="index.php?accion=listarEntrenamientos"><i class="fa-solid fa-dumbbell"></i> Entrenamientos</a>
                 <a href="index.php?accion=listarDietas"><i class="fa-solid fa-bowl-rice"></i> Dietas</a>
                 <a href="index.php?accion=listarPerfiles"><i class="fa-solid fa-globe"></i> Perfiles</a>

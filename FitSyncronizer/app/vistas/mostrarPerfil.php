@@ -127,13 +127,25 @@
                 <div class="row">
                     <div class="perfil-container">
                             <h2>Perfil de <?=$perfil->getNombreUsuarioProfesional()?></h2>
-                            <img src="web/fotosPerfiles/<?= htmlspecialchars($perfil->getImagen()) ?>" alt="Foto de Perfil" class="perfil-img">
-                            <p><strong>Nombre Personal:</strong> <?= htmlspecialchars($perfil->getNombrePersonal()) ?></p>
-                            <p><strong>Nombre de Usuario Profesional:</strong> <?= htmlspecialchars($perfil->getNombreUsuarioProfesional()) ?></p>
-                            <p><strong>Edad:</strong> <?= htmlspecialchars($perfil->getEdad()) ?></p>
-                            <p><strong>Años de Experiencia:</strong> <?= htmlspecialchars($perfil->getAnosExperiencia()) ?></p>
-                            <p><strong>Datos de Contacto:</strong> <?= htmlspecialchars($perfil->getDatosContacto()) ?></p>
-                            <p><strong>Trabajos Anteriores:</strong> <?= htmlspecialchars($perfil->getTrabajosAnteriores()) ?></p>
+                            <div class="card data-perfil__card">
+                                <div class="card__body" style="background-color:black;">
+                                    <img src="web/fotosPerfiles/<?= htmlspecialchars($perfil->getImagen()) ?>" alt="Foto de Perfil" class="perfil-img">
+                                    <p><strong>Nombre Personal:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getNombrePersonal()) ?></p>
+                                    <p><strong>Nombre de Usuario Profesional:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getNombreUsuarioProfesional()) ?></p>
+                                    <p><strong>Edad:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getEdad()) ?></p>
+                                    <p><strong>Descripción:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getDescripcionPersonal()) ?></p>
+                                    <p><strong>Años de Experiencia:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getAnosExperiencia()) ?></p>
+                                    <p><strong>Datos de Contacto:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getDatosContacto()) ?></p>
+                                    <p><strong>Trabajos Anteriores:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getTrabajosAnteriores()) ?></p>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -249,13 +261,25 @@
                 <div class="row row-small">
                 <div class="perfil-container">
                             <h2>Perfil de <?=$perfil->getNombreUsuarioProfesional()?></h2>
-                            <img src="web/fotosPerfiles/<?= htmlspecialchars($perfil->getImagen()) ?>" alt="Foto de Perfil" class="perfil-img">
-                            <p><strong>Nombre Personal:</strong> <?= htmlspecialchars($perfil->getNombrePersonal()) ?></p>
-                            <p><strong>Nombre de Usuario Profesional:</strong> <?= htmlspecialchars($perfil->getNombreUsuarioProfesional()) ?></p>
-                            <p><strong>Edad:</strong> <?= htmlspecialchars($perfil->getEdad()) ?></p>
-                            <p><strong>Años de Experiencia:</strong> <?= htmlspecialchars($perfil->getAnosExperiencia()) ?></p>
-                            <p><strong>Datos de Contacto:</strong> <?= htmlspecialchars($perfil->getDatosContacto()) ?></p>
-                            <p><strong>Trabajos Anteriores:</strong> <?= htmlspecialchars($perfil->getTrabajosAnteriores()) ?></p>
+                            <div class="card data-perfil__card">
+                                <div class="card__body" style="background-color:black;">
+                                    <img src="web/fotosPerfiles/<?= htmlspecialchars($perfil->getImagen()) ?>" alt="Foto de Perfil" class="perfil-img">
+                                    <p><strong>Nombre Personal:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getNombrePersonal()) ?></p>
+                                    <p><strong>Nombre de Usuario Profesional:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getNombreUsuarioProfesional()) ?></p>
+                                    <p><strong>Edad:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getEdad()) ?></p>
+                                    <p><strong>Descripción:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getDescripcionPersonal()) ?></p>
+                                    <p><strong>Años de Experiencia:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getAnosExperiencia()) ?></p>
+                                    <p><strong>Datos de Contacto:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getDatosContacto()) ?></p>
+                                    <p><strong>Trabajos Anteriores:</strong><br></p>
+                                    <p class="datos"><?= htmlspecialchars($perfil->getTrabajosAnteriores()) ?></p>
+                                </div>
+                            </div>
                     </div>
                 </div>
                 <footer class="crm_footer">
